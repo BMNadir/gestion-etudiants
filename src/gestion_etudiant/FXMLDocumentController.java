@@ -89,20 +89,21 @@ public class FXMLDocumentController implements Initializable {
         //Check if any of the fields is empty 
         if (lName.isEmpty() || fName.isEmpty() || bDate.isEmpty() || addr.isEmpty())
         {
-            //"
             prompt("Vous devez remplir tous les champs");
             return;
         }
-        String sql = "INSERT INTO Etudiant(nom_etudiant, prenom_etudiant, date_naiss,adresse_etudiant) VALUES("
-                + "?,"
-                + "?,"
-                + "?,"
-                + "?"
-                +")";
+        String sql = "INSERT INTO Etudiant"
+                + "(nom_etudiant, prenom_etudiant, date_naiss,adresse_etudiant) "
+                + "VALUES(?,?,?,?)";
         if (DbUtil.execAction(sql, lName, fName, bDate, addr))
         {
             prompt("L'etudiant "+ lName +" a été ajouté avec succès");
         }
+        nom.setText("");
+        prenom.setText("");
+        birthdate.setText("");
+        address.setText("");
+        loadStudents ();
     }
     
       

@@ -42,10 +42,11 @@ public class DbUtil {
             stat.setString(2, fName);
             stat.setString(3, bDay);
             stat.setString(4, addr);
-            stat.executeUpdate(qu);
+            stat.executeUpdate();
             return true;
         }
         catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
     }

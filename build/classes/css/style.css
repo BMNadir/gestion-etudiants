@@ -33,7 +33,7 @@
 }
 
 .jfx-text-field {
-    -fx-prompt-text-fill: #aaa;
+    -fx-prompt-text-fill: #999;
 }
 
 .jfx-text-field, .jfx-text-field:focused {
