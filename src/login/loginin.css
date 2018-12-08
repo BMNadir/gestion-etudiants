@@ -1,0 +1,14 @@
+
+* {
+    -fx-primary : #2A2E37;
+}
+.root {
+    -fx-background-color: -fx-primary;
+    -fx-padding: 0;
+}
+.jfx-text-field, .jfx-text-field:focused {
+    -fx-text-fill: #999;
+}
+.jfx-password-field, .jfx-password-field:focused {
+    -fx-text-fill: #999;
+}

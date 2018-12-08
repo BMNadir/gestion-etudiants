@@ -1,0 +1,118 @@
+
+/* 
+    Created on : Dec 3, 2018, 4:05:49 PM
+    Author     : B.M.Nadir 
+*/
+* {
+    -fx-primary : #2A2E37;
+}
+.root {
+    -fx-background-color: -fx-primary;
+    -fx-padding: 0;
+}
+
+.menu-bar 
+{
+    -fx-background-color: #ddd;
+    -fx-text-fill : #ffffff;
+    -fx-margin : 0;
+}
+.menuBtn 
+{
+    -fx-text-fill : #ffffff;
+}
+#tabBtn
+{
+    -fx-background-color: -fx-primary;
+}
+
+.tab-header-background
+{
+    -fx-background-color: -fx-primary;
+    -fx-min-height: 5em;
+}
+
+.jfx-text-field {
+    -fx-prompt-text-fill: #aaa;
+}
+
+.jfx-text-field, .jfx-text-field:focused {
+    -fx-text-fill: #ccc;
+}
+
+.jfx-button
+{
+    -fx-background-color: -fx-primary;
+    -fx-border-color: #FFFFF0;
+    -fx-border-width : 0;
+    -fx-padding : 3 0;
+} 
+.jfx-button:hover
+{
+    -fx-border-width : 0 0 3 0;
+} 
+
+
+
+.jfx-dialog-layout
+{
+    -fx-background-color: #FFFFF0;
+    -fx-text-fill: #fefeff;
+    -fx-pref-height: 75;
+    
+}
+.jfx-dialog-layout > .jfx-layout-heading 
+{
+    -fx-alignment: center;
+    -fx-font-weight: BOLD;
+    -fx-padding: 30 24 0 24;
+}
+.jfx-dialog-layout > .jfx-layout-actions 
+{
+    -fx-alignment: center-right;
+    -fx-hgap: 8;
+    -fx-padding: 8 8 8 8;
+}
+
+.jfx-dialog-layout > .jfx-layout-body {
+    -fx-alignment: center;
+    -fx-padding: 0 24 24 10;
+    -fx-pref-width: 300;
+}
+.jfx-dialog-layout > .jfx-layout-body .label {
+    -fx-text-fill: #fefeff;
+    -fx-font-size: 16.0;
+    -fx-wrap-text: true;
+}
+
+.table-view 
+{
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: #999;
+}
+.table-view .column-header,
+.table-view .column-header-background .filler
+{
+    -fx-background-color: -fx-primary;
+    -fx-border-color : #faf0e6;
+    -fx-border-width : 1 0; 
+}
+.table-view .column-header .label{
+   -fx-text-fill: #faf0e6;
+   -fx-font-weight: bold; 
+   -fx-alignment: CENTER;
+   -fx-max-height: 0;
+}
+
+.table-view .cell{
+  -fx-background-color: -fx-primary;
+  -fx-border-color: #999;
+  -fx-border-width : 0 1 0 0;
+  -fx-text-fill: #faf0e6;
+  -fx-alignment: CENTER;
+   
+}
+
+.jfx-combo-box {
+    -fx-prompt-text-fill: #999;
+}

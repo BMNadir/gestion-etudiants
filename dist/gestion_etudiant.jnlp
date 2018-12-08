@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="gestion_etudiant.jnlp">
+  <information>
+    <title>gestion_etudiant</title>
+    <vendor>NaD!R</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="gestion_etudiant.jar" size="12715" download="eager" />
+    <jar href="lib\h2-1.4.197.jar" size="1916539" download="eager" />
+    <jar href="lib\jfoenix-8.0.7.jar" size="2631271" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="gestion_etudiant" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="gestion_etudiant.GestionEtudiant"  name="gestion_etudiant" />
+  <update check="always"/>
+</jnlp>
