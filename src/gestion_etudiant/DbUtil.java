@@ -12,8 +12,8 @@ import java.util.logging.Logger;
  * @author B.M Nadir
  */
 public class DbUtil {
-    private static Connection conn;
-    private static PreparedStatement stat;
+    public static Connection conn;
+    public static PreparedStatement stat;
     private static ResultSet rs;
     public static void dbConnection ()
     {
@@ -76,6 +76,32 @@ public class DbUtil {
         }
         return null;
      }
+     
+     public static int delete (String sql)
+     {
+        try {
+            stat = conn.prepareStatement(sql);
+            return stat.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbUtil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+         
+     }
+
+     public static ResultSet search (String qu, String searchId)
+     {
+          try {
+            stat = conn.prepareStatement(qu);
+            stat.setString(1, searchId);
+            return stat.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbUtil.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+     }
+     
+     
 }
 
  /*

@@ -47,10 +47,12 @@
     -fx-border-width : 0;
     -fx-padding : 3 0;
 } 
+/*
 .jfx-button:hover
 {
     -fx-border-width : 0 0 3 0;
 } 
+*/
 
 
 
@@ -115,4 +117,13 @@
 
 .jfx-combo-box {
     -fx-prompt-text-fill: #999;
+}
+.suppLbl
+{
+    -fx-text-fill: #999;
+    -fx-alignment: BOTTOM_LEFT;
+}
+.suppBtns
+{
+    -fx-background-color: #FAF0E6;
 }

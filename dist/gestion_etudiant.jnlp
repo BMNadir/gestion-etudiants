@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="gestion_etudiant.jar" size="12847" download="eager" />
+    <jar href="gestion_etudiant.jar" size="16970" download="eager" />
     <jar href="lib\h2-1.4.197.jar" size="1916539" download="eager" />
     <jar href="lib\jfoenix-8.0.7.jar" size="2631271" download="eager" />
   </resources>

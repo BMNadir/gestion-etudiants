@@ -1,5 +1,6 @@
 package gestion_etudiant;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -18,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -69,6 +71,20 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Etudiant, String> bDateCol;
     @FXML
     private TableColumn<Etudiant, String> addrCol;
+    @FXML
+    private Tab suppMod;
+    @FXML
+    private JFXTextField searchID;
+    @FXML
+    private JFXButton searchbtn;
+    @FXML
+    private JFXTextField nomFld;
+    @FXML
+    private JFXTextField prenomFld;
+    @FXML
+    private JFXTextField bDateFld;
+    @FXML
+    private JFXTextField addrFld;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -133,6 +149,7 @@ public class FXMLDocumentController implements Initializable {
         
     }
     
+    @FXML
     public void loadStudents ()
     {
         ResultSet rs = DbUtil.loadStudents(combo.getValue().toString(), searchArea.getText());
@@ -152,6 +169,119 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         studentTable.getItems().setAll(listeEtudiant);
+    }
+
+    @FXML
+    private void searchStudent(ActionEvent event)  {
+        String id = searchID.getText();
+        if (id.isEmpty())
+        {
+            prompt("Vous devez insérez un ID");
+            return;
+        }
+        try {
+            ResultSet search = DbUtil.search("SELECT * FROM Etudiant WHERE id_etudiant=?", searchID.getText());
+            if (!search.first())
+            {
+                prompt("ID non trouvé");
+                return;
+            }
+            else //(search.next())
+            {
+                nomFld.setText(search.getString("nom_etudiant"));
+                prenomFld.setText(search.getString("prenom_etudiant"));
+                bDateFld.setText(search.getString("date_naiss"));
+                addrFld.setText(search.getString("adresse_etudiant"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void modifyStudent(ActionEvent event) {
+        String id = searchID.getText();
+        String lName = nomFld.getText();
+        String fName = prenomFld.getText();
+        String bDate = bDateFld.getText();
+        String addr = addrFld.getText();
+        if (id.isEmpty())
+        {
+            prompt("Vous devez sélectionner un étudiant");
+            return;
+        }
+        if (lName.isEmpty() || fName.isEmpty() || bDate.isEmpty() || addr.isEmpty())
+        {
+            prompt("Vous devez remplir tous les champs");
+            return;
+        }
+        JFXButton yesBtn = new JFXButton("Oui");
+        JFXButton noBtn = new JFXButton("Non");
+     
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("Etes-vous sûr de modifier les infos de "+lName));
+        content.setActions(yesBtn,noBtn);
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        
+        yesBtn.setOnAction((ActionEvent e) -> {
+            String sql = "UPDATE Etudiant SET "
+                    + " nom_etudiant=?, "
+                    + " prenom_etudiant=?, "
+                    + " date_naiss=?, "
+                    + " adresse_etudiant=? "
+                    + " WHERE id_etudiant='"+searchID.getText()+"'";
+            if (DbUtil.execAction(sql, lName, fName, bDate, addr))
+                {
+                    loadStudents ();
+                    dialog.close();
+                    prompt("Modification réussie ");
+                }
+        
+        });
+        noBtn.setOnAction((ActionEvent e) -> dialog.close());
+        
+        yesBtn.setStyle("-fx-background-color : #fff; -fx-cursor : HAND");
+        noBtn.setStyle("-fx-background-color : #fff; -fx-cursor : HAND");
+        dialog.show();
+        
+    }
+
+    @FXML
+    private void deleteStudent(ActionEvent event) {
+        String id = searchID.getText();
+        if (id.isEmpty())
+        {
+            prompt("Vous devez sélectionner un étudiant");
+            return;
+        }
+        JFXButton yesBtn = new JFXButton("Oui");
+        JFXButton noBtn = new JFXButton("Non");
+     
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Label("Etes-vous sûr de supprimer l'étudiant avec l'ID "+id));
+        content.setActions(yesBtn,noBtn);
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        
+        yesBtn.setOnAction((ActionEvent e) -> {
+            String sql = "DELETE FROM Etudiant WHERE id_etudiant='"+id+"'";
+            if (DbUtil.delete(sql) > 0)
+                {
+                    loadStudents ();
+                    dialog.close();
+                    searchID.setText("");
+                    nomFld.setText("");
+                    prenomFld.setText("");
+                    bDateFld.setText("");
+                    addrFld.setText("");
+                    prompt("Suppression réussie");
+                }
+        
+        });
+        noBtn.setOnAction((ActionEvent e) -> dialog.close());
+        
+        yesBtn.setStyle("-fx-background-color : #fff; -fx-cursor : HAND");
+        noBtn.setStyle("-fx-background-color : #fff; -fx-cursor : HAND");
+        dialog.show();
     }
  
     public class Etudiant 

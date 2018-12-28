@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
 <?import javafx.scene.Cursor?>
@@ -53,6 +54,7 @@
                </cursor>
             </JFXButton>
             <Label fx:id="warning" layoutX="158.0" layoutY="398.0" prefHeight="9.0" prefWidth="250.0" text="Utilisateur et/ou mot de passe no valide" textFill="RED" />
+            <JFXProgressBar fx:id="progressBar" focusTraversable="false" layoutX="12.0" layoutY="507.0" prefHeight="1.0" prefWidth="541.0" secondaryProgress="1.0" />
          </children>
       </AnchorPane>
    </children>

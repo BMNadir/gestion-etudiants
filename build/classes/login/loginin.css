@@ -12,3 +12,15 @@
 .jfx-password-field, .jfx-password-field:focused {
     -fx-text-fill: #999;
 }
+.jfx-progress-bar > .bar,
+.jfx-progress-bar:indeterminate > .bar{ /*the little bar, the one moving */
+    -fx-background-color: #0F9D58;
+    -fx-padding: 1.5;
+}
+
+.jfx-progress-bar > .secondary-bar,
+.jfx-progress-bar:indeterminate > .secondary-bar{ /*the outside bar, the track*/
+    -fx-background-color: #FAF0E6;
+    -fx-padding: 2 0;
+    -fx-border-radius: 20;
+}

@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -87,9 +88,53 @@
                            </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab id="tabBtn" style="-fx-cursor: HAND;" text="Supprimer un étudiant">
+                  <Tab id="tabBtn" fx:id="suppMod" style="-fx-cursor: HAND;" text="Supprimer/Modifer">
                     <content>
-                      <AnchorPane id="tabHeader" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane id="tabHeader" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTextField fx:id="searchID" layoutX="107.0" layoutY="14.0" onAction="#searchStudent" prefHeight="35.0" prefWidth="186.0" promptText="ID " />
+                              <JFXButton fx:id="searchbtn" focusTraversable="false" layoutX="307.0" layoutY="14.0" onAction="#searchStudent" prefHeight="35.0" prefWidth="155.0" styleClass="suppBtns" text="Extraire">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></JFXButton>
+                              <VBox layoutX="107.0" layoutY="84.0" spacing="20.0">
+                                 <children>
+                                    <HBox prefHeight="40.0" prefWidth="329.0">
+                                       <children>
+                                          <Label prefHeight="43.0" prefWidth="163.0" styleClass="suppLbl" text="Nom : " />
+                                          <JFXTextField fx:id="nomFld" prefHeight="41.0" prefWidth="167.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="40.0" prefWidth="329.0">
+                                       <children>
+                                          <Label prefHeight="43.0" prefWidth="163.0" styleClass="suppLbl" text="Prenom : " />
+                                          <JFXTextField fx:id="prenomFld" prefHeight="41.0" prefWidth="167.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="40.0" prefWidth="329.0">
+                                       <children>
+                                          <Label prefHeight="43.0" prefWidth="163.0" styleClass="suppLbl" text="Date de naissance : " />
+                                          <JFXTextField fx:id="bDateFld" prefHeight="41.0" prefWidth="167.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="40.0" prefWidth="329.0">
+                                       <children>
+                                          <Label prefHeight="43.0" prefWidth="163.0" styleClass="suppLbl" text="Adresse : " />
+                                          <JFXTextField fx:id="addrFld" prefHeight="41.0" prefWidth="167.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <JFXButton focusTraversable="false" layoutX="107.0" layoutY="355.0" onAction="#modifyStudent" prefHeight="50.0" prefWidth="91.0" style="-fx-background-color: faf0e6;" stylesheets="@../css/style.css" text="Modifier">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></JFXButton>
+                              <JFXButton focusTraversable="false" layoutX="346.0" layoutY="355.0" onAction="#deleteStudent" prefHeight="50.0" prefWidth="90.0" style="-fx-background-color: faf0e6;" stylesheets="@../css/style.css" text="Supprimer">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXButton>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
                </tabs>
